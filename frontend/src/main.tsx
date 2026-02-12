@@ -1,6 +1,6 @@
-import { StrictMode } from "react"
+import { StrictMode, useLayoutEffect } from "react"
 import { createRoot } from "react-dom/client"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom"
 import "./index.css"
 import App from "./App.tsx"
 import Footer from "@/components/common/Footer.tsx"
@@ -17,46 +17,52 @@ import SetupIPTel from "@/pages/services/SetupIPTel.tsx"
 import SetupSMS from "@/pages/services/SetupSMS.tsx"
 import CallTracking from "@/pages/services/CallTracking.tsx"
 import GetInTouch from "./components/common/GetInTouch.tsx"
-import CarService from "./pages/cases/CarService.tsx"
-import BeutyAgency from "./pages/cases/BeutyAgency.tsx"
-import Flowers from "./pages/cases/Flowers.tsx"
-import RealEstateAgency from "./pages/cases/RealEstateAgency.tsx"
-import ShipRental from "./pages/cases/ShipRental.tsx"
-import CasesDefault from "./components/cases/CasesDefault.tsx"
+import Case from "./pages/Case.tsx"
 import ServicesOutlet from "./pages/ServicesOutlet.tsx"
+
+//@ts-ignore
+const Wrapper = ({children}) => {
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [location.pathname]);
+  return children
+} 
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Header />
 
-      <Routes>
-        <Route path="/" element={<App />} />
-        
-        {/* Cases */}
-        <Route path="cases">
-          <Route index element={<Cases />} />
-          <Route path="carsevice" element={<CarService />} />
-          <Route path="beutyagency" element={<BeutyAgency />} />
-          <Route path="flowers" element={<Flowers />} />
-          <Route path="realestate" element={<RealEstateAgency />} />
-          <Route path="shipping" element={<ShipRental />} />
-        </Route>
+      <Wrapper>
+        <Routes>
+          <Route path="/" element={<App />} />
+          
+          {/* Cases */}
+          <Route path="cases">
+            <Route index element={<Cases />} />
+            <Route path=":caseid" element={<Case />} />
+          </Route>
 
-        {/* Services */}
-        <Route path="/services" element={<Services />} />
-        <Route element={<ServicesOutlet/>}>
-          <Route path="/audit-crm" element={<AuditCRM />} />
-          <Route path="/audit-sales" element={<AuditSales />} />
-          <Route path="/integration-crm" element={<IntegrationCRM />} />
-          <Route path="/integration-y-clients" element={<IntegrationYClients />} />
-          <Route path="/marketing-lead-generation" element={<MarketingLeadGeneration />} />
-          <Route path="/setup-email" element={<SetupEmail />} />
-          <Route path="/setup-ip-tel" element={<SetupIPTel />} />
-          <Route path="/call-tracking" element={<CallTracking />} />
-          <Route path="/setup-sms" element={<SetupSMS />} />
-        </Route>
-      </Routes>
+          {/* Services */}
+          <Route path="/services" element={<Services />} />
+          <Route element={<ServicesOutlet/>}>
+            <Route path="/audit-crm" element={<AuditCRM />} />
+            <Route path="/audit-sales" element={<AuditSales />} />
+            <Route path="/integration-crm" element={<IntegrationCRM />} />
+            <Route path="/integration-y-clients" element={<IntegrationYClients />} />
+            <Route path="/marketing-lead-generation" element={<MarketingLeadGeneration />} />
+            <Route path="/setup-email" element={<SetupEmail />} />
+            <Route path="/setup-ip-tel" element={<SetupIPTel />} />
+            <Route path="/call-tracking" element={<CallTracking />} />
+            <Route path="/setup-sms" element={<SetupSMS />} />
+          </Route>
+        </Routes>
+      </Wrapper>
 
       <GetInTouch />
       <Footer />

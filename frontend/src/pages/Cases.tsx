@@ -14,11 +14,9 @@ function Page() {
                 </div>
             </PageTitle>
             <div className="w-full bg-white relative -mb-5 rounded-b-3xl pt-10">
-                <Wrappers className="w-full">
-                <p className="text-3xl font-bold">Кейсы наших работ</p>
-                <p>Изучите кейсы наших работ из вашей индустрии.</p>
+                <Wrappers className="w-full py-4">
+                    <Cases cases={store.cases ?? []} />
                 </Wrappers>
-                <Cases cases={store.cases ?? []} />
             </div>
         </main>
     )
