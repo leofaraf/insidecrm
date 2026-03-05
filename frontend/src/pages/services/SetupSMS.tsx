@@ -1,4 +1,5 @@
 import Includes from "@/components/Includes";
+import ImplementationSteps from "@/components/ImplementationSteps";
 import PageTitle from "@/components/PageTitle";
 
 const includesItems = [
@@ -19,6 +20,13 @@ const problemsItems = [
   "Сообщения выглядят как спам и дают низкий отклик",
   "Нет автоматических SMS по событиям в CRM",
   "Команда не понимает, какие кампании реально работают",
+];
+
+const stepsItems = [
+  "Анализируем базу, сценарии коммуникаций и задачи SMS-канала.",
+  "Настраиваем сегментацию и шаблоны сообщений под этапы воронки.",
+  "Подключаем триггерные отправки из CRM и правила частотности.",
+  "Запускаем кампании и оптимизируем по метрикам доставок и отклика.",
 ];
 
 function ServicePage() {
@@ -42,6 +50,7 @@ function ServicePage() {
         items={includesItems}
         problems={problemsItems}
       />
+      <ImplementationSteps steps={stepsItems} />
     </>
   );
 }

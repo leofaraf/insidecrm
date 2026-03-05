@@ -1,4 +1,5 @@
 import Includes from "@/components/Includes";
+import ImplementationSteps from "@/components/ImplementationSteps";
 import PageTitle from "@/components/PageTitle";
 
 const includesItems = [
@@ -19,6 +20,13 @@ const problemsItems = [
   "Менеджеры по-разному обрабатывают одинаковые лиды",
   "Скрипты продаж не соблюдаются в диалогах",
   "Руководителю сложно контролировать качество работы",
+];
+
+const stepsItems = [
+  "Анализируем текущую воронку, скрипты и коммуникации менеджеров.",
+  "Собираем точки потерь и определяем приоритеты улучшений.",
+  "Внедряем стандарты и инструменты контроля качества продаж.",
+  "Отслеживаем динамику KPI и корректируем процесс по данным.",
 ];
 
 function ServicePage() {
@@ -42,6 +50,7 @@ function ServicePage() {
         items={includesItems}
         problems={problemsItems}
       />
+      <ImplementationSteps steps={stepsItems} />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import Includes from "@/components/Includes";
 import PageTitle from "@/components/PageTitle";
+import Wrappers from "@/components/common/Wrappers";
+import { Card, CardContent } from "@/components/ui/card";
 
 const includesItems = [
   "Аудит текущих процессов продаж и CRM-структуры",
@@ -21,6 +23,44 @@ const problemsItems = [
   "Интеграции с телефонией и сайтом работают нестабильно",
 ];
 
+const implementationFlow = [
+  {
+    step: "Исследуем отдел продаж, разбираем бизнес-процессы",
+    action:
+      "Проводим анализ процесса продаж со всеми участниками сделки: руководитель отдела продаж, менеджеры и руководитель компании. Создаем эталонный процесс продажи и разбираем каждое действие сотрудника.",
+    result:
+      "Простая и наглядная схема текущего процесса продаж, которая дорабатывается и переносится в amoCRM.",
+  },
+  {
+    step: "Составление карты проекта, презентация дизайна системы",
+    action:
+      "Проектируем будущую систему, дополнительные поля сделок, контактов и компаний. Создаем воронки продаж и этапы, проектируем обязательность полей при работе по этапам.",
+    result:
+      "Презентация будущей системы простым и понятным языком, четкое понимание результата на выходе.",
+  },
+  {
+    step: "Внедрение системы и интеграция источников обращений",
+    action:
+      "Переносим согласованный дизайн CRM-системы в amoCRM и настраиваем интеграцию источников входящих обращений: сайт, телефония, почта, социальные сети. Настраиваем автоматизацию контроля зависания сделок и уведомления руководителя.",
+    result:
+      "Готовая к работе система: исключены потери входящих обращений, автоматизация упрощает работу сотрудников.",
+  },
+  {
+    step: "Подготовка регламентов и обучение сотрудников",
+    action:
+      "Готовим регламенты по работе в системе, обучаем сотрудников и руководителей по отдельности. Проводим теоретическую часть с вопросами-ответами и практику на реальных заявках в готовой системе.",
+    result:
+      "Сотрудники уверенно работают в новом инструменте, руководители понимают, как контролировать работу и ключевые показатели.",
+  },
+  {
+    step: "Сопровождаем, анализируем и проводим еженедельные разборы",
+    action:
+      "После запуска остаемся с командой, помогаем по вопросам и вносим корректировки при необходимости. Анализируем работу сотрудников и проводим еженедельные разборы с ошибками и лучшими практиками.",
+    result:
+      "amoCRM работает как задумано, команда оказывает лучший сервис и не теряет клиентов.",
+  },
+];
+
 function ServicePage() {
   return (
     <>
@@ -37,11 +77,44 @@ function ServicePage() {
           </p>
         </div>
       </PageTitle>
+
       <Includes
         title="Сопровождение amoCRM включает:"
         items={includesItems}
         problems={problemsItems}
       />
+
+      <section className="w-full py-10">
+        <Wrappers className="w-full">
+          <div className="mb-6">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">amoCRM</p>
+            <h2 className="text-2xl font-bold sm:text-3xl">Как происходит внедрение системы</h2>
+          </div>
+
+          <Card className="border-zinc-200/80 shadow-sm">
+            <CardContent className="divide-y divide-zinc-200">
+              {implementationFlow.map((item, index) => (
+                <div key={`${item.step}-${index}`} className="py-5 first:pt-0 last:pb-0">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                        {index + 1}. {item.step}
+                      </p>
+                      <p className="text-sm leading-relaxed">{item.action}</p>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold uppercase tracking-[0.12em] text-emerald-700">
+                        Результат
+                      </p>
+                      <p className="text-sm leading-relaxed">{item.result}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </Wrappers>
+      </section>
     </>
   );
 }

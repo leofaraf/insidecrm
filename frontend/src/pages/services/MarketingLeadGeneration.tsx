@@ -1,4 +1,5 @@
 import Includes from "@/components/Includes";
+import ImplementationSteps from "@/components/ImplementationSteps";
 import PageTitle from "@/components/PageTitle";
 
 const includesItems = [
@@ -19,6 +20,13 @@ const problemsItems = [
   "Стоимость лида растет без прогнозируемого результата",
   "Нет сквозной аналитики от рекламы до сделки",
   "Гипотезы запускаются хаотично и не фиксируются",
+];
+
+const stepsItems = [
+  "Проводим аудит каналов, офферов и текущей воронки заявок.",
+  "Формируем приоритетные гипотезы и медиа-план запуска.",
+  "Запускаем связки, подключаем аналитику и CRM-маршрутизацию.",
+  "Масштабируем эффективные каналы по KPI и юнит-экономике.",
 ];
 
 function ServicePage() {
@@ -42,6 +50,7 @@ function ServicePage() {
         items={includesItems}
         problems={problemsItems}
       />
+      <ImplementationSteps steps={stepsItems} />
     </>
   );
 }

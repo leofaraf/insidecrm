@@ -1,4 +1,5 @@
 import Includes from "@/components/Includes";
+import ImplementationSteps from "@/components/ImplementationSteps";
 import PageTitle from "@/components/PageTitle";
 
 const includesItems = [
@@ -19,6 +20,13 @@ const problemsItems = [
   "Администраторы тратят время на рутинные операции",
   "История клиента и статусы теряются между сервисами",
   "Повторные визиты не управляются системно",
+];
+
+const stepsItems = [
+  "Разбираем текущий путь клиента от записи до оплаты услуги.",
+  "Настраиваем Yclients под ваши роли, услуги и расписания.",
+  "Интегрируем Yclients с CRM и автоматизируем обмен данными.",
+  "Проводим тестовый запуск и закрепляем процесс на команде.",
 ];
 
 function ServicePage() {
@@ -42,6 +50,7 @@ function ServicePage() {
         items={includesItems}
         problems={problemsItems}
       />
+      <ImplementationSteps steps={stepsItems} />
     </>
   );
 }

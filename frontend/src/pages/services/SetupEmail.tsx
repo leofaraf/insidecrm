@@ -1,4 +1,5 @@
 import Includes from "@/components/Includes";
+import ImplementationSteps from "@/components/ImplementationSteps";
 import PageTitle from "@/components/PageTitle";
 
 const includesItems = [
@@ -19,6 +20,13 @@ const problemsItems = [
   "База не сегментирована по этапам и интересам",
   "Нет автоматических цепочек после действий клиента",
   "Результаты рассылок не связаны с продажами",
+];
+
+const stepsItems = [
+  "Аудитируем базу, инфраструктуру домена и текущие сценарии рассылок.",
+  "Проектируем сегменты и цепочки писем под этапы воронки.",
+  "Настраиваем отправку, триггеры и интеграции с CRM.",
+  "Запускаем кампании, измеряем метрики и оптимизируем контент.",
 ];
 
 function ServicePage() {
@@ -42,6 +50,7 @@ function ServicePage() {
         items={includesItems}
         problems={problemsItems}
       />
+      <ImplementationSteps steps={stepsItems} />
     </>
   );
 }

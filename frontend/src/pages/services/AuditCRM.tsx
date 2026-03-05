@@ -1,4 +1,5 @@
 import Includes from "@/components/Includes";
+import ImplementationSteps from "@/components/ImplementationSteps";
 import PageTitle from "@/components/PageTitle";
 
 const includesItems = [
@@ -21,6 +22,13 @@ const problemsItems = [
   "Команда теряет сделки из-за несистемной работы",
 ];
 
+const stepsItems = [
+  "Проводим диагностику текущей CRM и фиксируем проблемные зоны.",
+  "Формируем приоритетный план изменений с понятным эффектом.",
+  "Внедряем доработки по этапам без остановки отдела продаж.",
+  "Проверяем результат по метрикам и закрепляем новые стандарты.",
+];
+
 function ServicePage() {
   return (
     <>
@@ -38,6 +46,7 @@ function ServicePage() {
         </div>
       </PageTitle>
       <Includes title="Аудит CRM включает:" items={includesItems} problems={problemsItems} />
+      <ImplementationSteps steps={stepsItems} />
     </>
   );
 }

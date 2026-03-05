@@ -1,4 +1,5 @@
 import Includes from "@/components/Includes";
+import ImplementationSteps from "@/components/ImplementationSteps";
 import PageTitle from "@/components/PageTitle";
 
 const includesItems = [
@@ -19,6 +20,13 @@ const problemsItems = [
   "Часть обращений теряется и не фиксируется в CRM",
   "Невозможно оценить реальную стоимость звонка",
   "Отдел продаж не видит источник и контекст обращения",
+];
+
+const stepsItems = [
+  "Аудитируем каналы трафика и текущую схему обработки звонков.",
+  "Подключаем номера и настраиваем корректную атрибуцию источников.",
+  "Интегрируем коллтрекинг с CRM и рекламными кабинетами.",
+  "Запускаем отчеты и обучаем команду работать с аналитикой звонков.",
 ];
 
 function ServicePage() {
@@ -42,6 +50,7 @@ function ServicePage() {
         items={includesItems}
         problems={problemsItems}
       />
+      <ImplementationSteps steps={stepsItems} />
     </>
   );
 }
