@@ -8,8 +8,8 @@ import { ArrowDownRight } from "lucide-react";
 function CasesDefault() {
     return (
         <Wrappers className="w-full">
-            <p className="text-3xl font-bold">Кейсы наших работ</p>
-            <p>Изучите кейсы наших работ из вашей индустрии.</p>
+            <p className="text-3xl font-bold max-w-160">Почему лидеры рынка предпочитают работать с командой InsideCRM</p>
+            <p className="text-lg max-w-180 pt-4">В кейсах раскрываем, как мы создаём систему продаж на базе amoCRM, которая масштабируется вместе с компанией без потери качества в работе с клиентами.</p>
             <div className="py-10 space-y-4">
                 <Cases cases={store.cases.slice(0, 3) ?? []} />
                 <Link to={"/cases"}>

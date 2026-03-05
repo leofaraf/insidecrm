@@ -18,7 +18,7 @@ import SetupSMS from "@/pages/services/SetupSMS.tsx"
 import CallTracking from "@/pages/services/CallTracking.tsx"
 import GetInTouch from "./components/common/GetInTouch.tsx"
 import Case from "./pages/Case.tsx"
-import ServicesOutlet from "./pages/ServicesOutlet.tsx"
+import BasicOutlet from "./pages/BasicOutlet.tsx"
 
 //@ts-ignore
 const Wrapper = ({children}) => {
@@ -45,12 +45,14 @@ createRoot(document.getElementById("root")!).render(
           {/* Cases */}
           <Route path="cases">
             <Route index element={<Cases />} />
-            <Route path=":caseid" element={<Case />} />
+            <Route element={<BasicOutlet/>}>
+              <Route path=":caseid" element={<Case />} />
+            </Route>
           </Route>
 
           {/* Services */}
           <Route path="/services" element={<Services />} />
-          <Route element={<ServicesOutlet/>}>
+          <Route element={<BasicOutlet/>}>
             <Route path="/audit-crm" element={<AuditCRM />} />
             <Route path="/audit-sales" element={<AuditSales />} />
             <Route path="/integration-crm" element={<IntegrationCRM />} />
