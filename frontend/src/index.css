@@ -148,3 +148,58 @@
   white-space: nowrap;
   padding-right: 2rem; /* расстояние между повторами */
 }
+@keyframes faq-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes faq-item-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-enter {
+  animation: faq-enter-up 480ms ease-out both;
+}
+
+.faq-item-enter {
+  opacity: 0;
+  animation: faq-item-fade-up 420ms ease-out both;
+}
+
+.faq-row .faq-answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms ease;
+}
+
+.faq-row .faq-answer-inner {
+  overflow: hidden;
+}
+
+.faq-row .faq-answer {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 240ms ease, transform 280ms ease;
+}
+
+.faq-row[open] .faq-answer-wrap {
+  grid-template-rows: 1fr;
+}
+
+.faq-row[open] .faq-answer {
+  opacity: 1;
+  transform: translateY(0);
+}
