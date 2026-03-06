@@ -1,6 +1,6 @@
 import PageTitle from "@/components/PageTitle";
 import Wrappers from "@/components/common/Wrappers";
-import { store } from "@/store";
+import { casesStore } from "@/casesStore";
 import { Link, useParams } from "react-router-dom";
 
 function formatResult(change: number | string) {
@@ -13,7 +13,7 @@ function formatResult(change: number | string) {
 
 function Page() {
   const { caseid } = useParams();
-  const caseItem = store.cases.find((item) => {
+  const caseItem = casesStore.find((item) => {
     const slug = item.preview_url.replace(/\/+$/, "").split("/").pop();
     return slug === caseid;
   });
@@ -39,6 +39,53 @@ function Page() {
       </main>
     );
   }
+
+  const renderDescriptionLine = (line: string, index: number) => {
+    const trimmedLine = line.trim();
+
+    if (!trimmedLine) {
+      return <div key={`description-space-${index}`} className="h-2" />;
+    }
+
+    if (trimmedLine.startsWith("###")) {
+      return (
+        <h4 key={`description-h3-${index}`} className="text-xl font-semibold">
+          {trimmedLine.replace(/^###\s*/, "")}
+        </h4>
+      );
+    }
+
+    if (trimmedLine.startsWith("##")) {
+      return (
+        <h3 key={`description-h2-${index}`} className="text-2xl font-semibold">
+          {trimmedLine.replace(/^##\s*/, "")}
+        </h3>
+      );
+    }
+
+    if (trimmedLine.startsWith("#")) {
+      return (
+        <h2 key={`description-h1-${index}`} className="text-3xl font-semibold">
+          {trimmedLine.replace(/^#\s*/, "")}
+        </h2>
+      );
+    }
+
+    if (trimmedLine.startsWith("- ") || trimmedLine.startsWith("* ")) {
+      return (
+        <p key={`description-bullet-${index}`} className="text-lg leading-relaxed">
+          {"\u2022 "}
+          {trimmedLine.replace(/^[-*]\s*/, "")}
+        </p>
+      );
+    }
+
+    return (
+      <p key={`description-text-${index}`} className="text-lg leading-relaxed">
+        {trimmedLine}
+      </p>
+    );
+  };
 
   return (
     <main>
@@ -80,9 +127,9 @@ function Page() {
             ))}
           </div>
 
-          <Link to="/cases" className="text-lg underline">
-            Все кейсы
-          </Link>
+          <section className="space-y-4">
+            {caseItem.description?.map((line, idx) => renderDescriptionLine(line, idx))}
+          </section>
         </Wrappers>
       </div>
     </main>

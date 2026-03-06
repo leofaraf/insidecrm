@@ -1,7 +1,7 @@
 import Cases from "@/components/Cases";
 import Wrappers from "@/components/common/Wrappers";
 import PageTitle from "@/components/PageTitle";
-import { store } from "@/store";
+import { casesStore } from "@/casesStore";
 
 function Page() {
     return (
@@ -15,7 +15,7 @@ function Page() {
             </PageTitle>
             <div className="w-full bg-white relative -mb-5 rounded-b-3xl pt-10">
                 <Wrappers className="w-full py-4">
-                    <Cases cases={store.cases ?? []} />
+                    <Cases cases={casesStore} />
                 </Wrappers>
             </div>
         </main>
