@@ -59,6 +59,23 @@ export default function GetInTouch() {
           </a>
         </div>
 
+        <div className="mb-10 flex w-full items-start justify-between gap-6">
+          <div className="flex flex-col gap-2">
+            <a
+              href="/privacy-policy.html"
+              className="text-sm text-zinc-400 hover:text-zinc-200"
+            >
+              Политика конфиденциальности
+            </a>
+            <a
+              href="/personal-data-consent.html"
+              className="text-sm text-zinc-400 hover:text-zinc-200"
+            >
+              Согласие на обработку персональных данных
+            </a>
+          </div>
+        </div>
+
         {/* Bottom row */}
         <div className="flex flex-col gap-8">
           {/* Mobile buttons */}
@@ -90,7 +107,12 @@ export default function GetInTouch() {
             {/* Desktop buttons */}
             <div className="hidden items-center gap-6 lg:flex">
               {contacts.map(({ title, href, primary }) => (
-                <ContactButton key={title} href={href} primary={primary} important={false}>
+                <ContactButton
+                  key={title}
+                  href={href}
+                  primary={primary}
+                  important={false}
+                >
                   {title}
                 </ContactButton>
               ))}
@@ -102,7 +124,7 @@ export default function GetInTouch() {
                 href="#home"
                 className="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200"
               >
-                <span>Вернуться на вверх</span>
+                <span>Вернуться наверх</span>
                 <ArrowUpRight className="h-4 w-4 md:h-4 md:w-4" />
               </a>
               <p className="text-base text-zinc-100">
